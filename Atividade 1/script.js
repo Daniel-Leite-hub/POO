@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 console.log("Hello, World!");
 // Questão 2
 // let idade: number = "2"; não aceita string, pois a variável idade é do tipo number
@@ -17,13 +16,13 @@ console.log(a + b); // em ts é 105, pois a variável b é uma string, então o 
 // B
 let x = true;
 let y = 2;
-console.log(x + y); // o typescript não aceita a soma de booleano com number, mas o javascript converte o booleano para number
+//console.log(x + y); // o typescript não aceita a soma de booleano com number, mas o javascript converte o booleano para number
 // C
-console.log(0 == false); // em ts é false,pois number ebo booleano são tipos diferentes,
+//console.log(0 == false); // em ts é false,pois number ebo booleano são tipos diferentes,
 //  mas em js é true, pois o operador == faz a conversão de tipos antes de comparar os valores
-console.log("" == false); // em ts é false, pois string e booleano são tipos diferentes,
+//console.log("" == false); // em ts é false, pois string e booleano são tipos diferentes,
 //  mas em js é true, pois o operador == faz a conversão de tipos antes de comparar os valores
-console.log(null == undefined); // em ts é true, pois null e undefined são tipos compatíveis,
+//console.log(null == undefined); // em ts é true, pois null e undefined são tipos compatíveis,
 //  mas em js é true, pois o operador == faz a conversão de tipos antes de comparar os valores
 // Questão 5 Comentário acima de cada linha de código explicando o que cada linha faz
 // Questão 6
@@ -69,4 +68,64 @@ circulo1.raio = 5;
 console.log(circulo1.calculararea());
 console.log(circulo1.calcularcircunferencia());
 // Questão 10
+class SituacoFinanceira {
+    valorcredito = 0;
+    valordebito = 0;
+    calcularsaldo() {
+        return this.valorcredito - this.valordebito;
+    }
+}
+const fin = new SituacoFinanceira();
+fin.valorcredito = 1000;
+fin.valordebito = 500;
+console.log(fin.calcularsaldo());
+// Questão 11
+class Pessoa {
+    nome = "";
+    idade = 0;
+    apresentar() {
+        return `Meu nome é ${this.nome} e tenho ${this.idade} anos.`;
+    }
+}
+const p = new Pessoa();
+p.nome = "Ely";
+p.idade = 46;
+console.log(p.apresentar());
+// Questão 12
+class Produto {
+    nome = "";
+    preco = 0;
+    aplicarDesconto(percentual) {
+        return this.preco * (1 - percentual / 100);
+    }
+    emitirOrcamento(percentual) {
+        const novoPreco = this.aplicarDesconto(percentual);
+        const precoFormatado = this.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        const novoPrecoFormatado = novoPreco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        return `Produto: ${this.nome}, Preço: ${precoFormatado}\nDesconto: ${percentual}% → Novo preço: ${novoPrecoFormatado}`;
+    }
+}
+const prod = new Produto();
+prod.nome = "Camisa";
+prod.preco = 100.00;
+console.log(prod.emitirOrcamento(10));
+// Questão 13
+class Numero {
+    valor = 0;
+    ehPar() {
+        return this.valor % 2 === 0;
+    }
+    ehImpar() {
+        return !this.ehPar();
+    }
+}
+// Instanciação e teste
+const num1 = new Numero();
+num1.valor = 4;
+console.log(`O número ${num1.valor} é par? ${num1.ehPar()}`); // true
+console.log(`O número ${num1.valor} é ímpar? ${num1.ehImpar()}`); // false
+const num2 = new Numero();
+num2.valor = 7;
+console.log(`O número ${num2.valor} é par? ${num2.ehPar()}`); // false
+console.log(`O número ${num2.valor} é ímpar? ${num2.ehImpar()}`); // true
 //# sourceMappingURL=script.js.map
